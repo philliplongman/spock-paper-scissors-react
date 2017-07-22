@@ -3,9 +3,8 @@
 }
 
 .App-header {
-  background-color: #808080;
-  text-align: center;
-  padding-top: 6px;
+  background-color: #5098c6;
+  padding: 20px;
 }
 
 .App-header h2 {
@@ -19,5 +18,38 @@
 
 .App-header span {
   position: relative;
-  bottom: 24px;
+  bottom: 22px;
+}
+
+.App-scoreboard {
+  align-items: center;
+  background-color: #222000;
+  color: #ffffff;
+  display: flex;
+  height: 80px;
+}
+
+.App-scoreboard div {
+  flex-grow: 1;
+  font-size: 22px;
+}
+
+.App-round {
+  font-size: 20px;
+  margin: 26px 0 40px 0;
+}
+
+.App-officer {
+  flex-grow: 1;
+}
+
+.App-officer img{
+  width: 100%;
+}
+
+.App-officers {
+  display: flex;
+  margin: auto;
+  margin-top: 20px;
+  max-width: 600px;
 }
