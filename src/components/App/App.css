@@ -1,24 +1,23 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  background-color: #808080;
+  text-align: center;
+  padding-top: 6px;
 }
 
-.App-intro {
-  font-size: large;
+.App-header h2 {
+  margin: 0;
+  color: #242424;
+  font-family: Final Frontier Oldstyle;
+  font-style: italic;
+  font-size: 46px;
+  text-transform: uppercase;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.App-header span {
+  position: relative;
+  bottom: 24px;
 }
