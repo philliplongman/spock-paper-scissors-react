@@ -2,6 +2,6 @@
 
 Rock Paper Scissors in the Final Frontier!
 
-Kirk beats Spock, Spock beats Bones, Bones beats Kirk.
+Kirk fascinates Spock, Spock logics Bones, Bones sasses Kirk.
 
 My first React project; built with `create-react-app`. [Try it out on Heroku.](https://spockpaperscissors.herokuapp.com/)
