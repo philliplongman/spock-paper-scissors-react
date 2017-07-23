@@ -4,7 +4,7 @@
 
 .App-header {
   background-color: #5098c6;
-  padding: 20px;
+  padding: 30px;
 }
 
 .App-header h2 {
@@ -12,24 +12,29 @@
   color: #242424;
   font-family: Final Frontier Oldstyle;
   font-style: italic;
-  font-size: 46px;
+  font-size: 54px;
   text-transform: uppercase;
 }
 
 .App-header span {
   position: relative;
-  bottom: 22px;
+  bottom: 20px;
 }
 
 .App-scoreboard {
-  align-items: center;
   background-color: #222000;
   color: #ffffff;
-  display: flex;
-  height: 80px;
 }
 
-.App-scoreboard div {
+.App-scoreboard-container{
+  align-items: center;
+  display: flex;
+  height: 80px;
+  margin: auto;
+  max-width: 1200px;
+}
+
+.App-scoreboard-container div {
   flex-grow: 1;
   font-size: 22px;
 }

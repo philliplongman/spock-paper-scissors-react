@@ -40,8 +40,10 @@ class App extends Component {
         </div>
 
         <div className="App-scoreboard">
-          <div>Enterprise: {this.state.score.player}</div>
-          <div>Khan: {this.state.score.computer}</div>
+          <div className="App-scoreboard-container">
+            <div>Enterprise: {this.state.score.player}</div>
+            <div>Khan: {this.state.score.computer}</div>
+          </div>
         </div>
 
         <div className="App-round">
