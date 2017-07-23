@@ -1,13 +1,41 @@
+import randomItem from "random-item"
+
 import Round from './round'
+import {kirk, spock, bones} from "./move"
 
 class Match {
   constructor() {
+    this.choices = [kirk, spock, bones]
     this.rounds = []
   }
 
   newRound(index) {
-    this.rounds.push(new Round(index))
+    let playerChoice = this.choices[index]
+    let computerChoice = this.semiRandomChoice(playerChoice, 1)
+    let round = new Round(playerChoice, computerChoice)
+    this.rounds.push(round)
     return this.state()
+  }
+
+  semiRandomChoice(playerChoice, iteration) {
+    // Humans don't repeat themselves as often as a random number generator,
+    // and tied rounds are boring. Attempt to reduce both outcomes by retrying
+    // repeatedly before accepting either result.
+    let choice = randomItem(this.choices)
+
+    if (iteration === 5) return choice
+
+    if (choice === this.lastComputerChoice() || choice === playerChoice) {
+      this.semiRandomChoice(playerChoice, iteration + 1)
+    }
+
+    return choice
+  }
+
+  lastComputerChoice() {
+    if (this.rounds.length > 0) {
+      return this.rounds[this.rounds.length - 1].computerChoice
+    }
   }
 
   state() {
