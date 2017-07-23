@@ -1,4 +1,4 @@
-import randomItem from "random-item"
+import Chance from "chance"
 import last from "array-last"
 
 import Round from './round'
@@ -12,29 +12,42 @@ class Rounds {
 
   newRound(index) {
     let playerChoice   = this.choices[index]
-    let computerChoice = this.semiRandomChoice(playerChoice, 1)
+    let computerChoice = this.choices[this.randomIndex(index)]
+    console.log(computerChoice.name);
     let round          = new Round(playerChoice, computerChoice)
 
     this.rounds.push(round)
   }
 
-  semiRandomChoice(playerChoice, iteration) {
+  randomIndex(index) {
     // Humans don't repeat themselves as often as a random number generator,
-    // and tied rounds are boring. Attempt to reduce both outcomes by retrying
-    // several times before accepting either result.
-    let choice = randomItem(this.choices)
-
-    if (iteration === 5) return choice
-
-    if (choice === this.lastComputerChoice() || choice === playerChoice) {
-      this.semiRandomChoice(playerChoice, iteration + 1)
-    }
-
-    return choice
+    // and tied rounds are boring. Attempt to reduce both outcomes by
+    // weighting the choices when selecting.
+    let chance = new Chance()
+    return chance.weighted([0, 1, 2], this.weights(index))
   }
 
-  lastComputerChoice() {
-    if (this.last()) return this.last().computerChoice
+  weights(index) {
+    let weights = [1, 1, 1]
+    // give higher weights to the moves chosen least
+    if (this.count() > 0) {
+      weights = this.choices.map((choice) => {
+        return this.weightFor(choice)
+      })
+    }
+    // give a lower weight to the move chosen by the player
+    weights[index] = weights[index]/2
+    console.log(weights);
+    return weights
+  }
+
+  weightFor(choice) {
+    // inverted percent of times chosen by the computer
+    let timesChosen = this.rounds.reduce((count, round) => {
+      return (round.computerChoice === choice) ? count + 1 : count
+    }, 0)
+    let percent = timesChosen/this.count()
+    return 1 - percent
   }
 
   count() {
