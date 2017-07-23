@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "array-last": "^1.1.1",
+    "is-empty": "^1.2.0",
     "random-item": "^1.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

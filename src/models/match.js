@@ -1,4 +1,6 @@
 import randomItem from "random-item"
+import last from "array-last"
+import empty from "is-empty"
 
 import Round from './round'
 import {kirk, spock, bones} from "./move"
@@ -10,9 +12,10 @@ class Match {
   }
 
   newRound(index) {
-    let playerChoice = this.choices[index]
+    let playerChoice   = this.choices[index]
     let computerChoice = this.semiRandomChoice(playerChoice, 1)
-    let round = new Round(playerChoice, computerChoice)
+    let round          = new Round(playerChoice, computerChoice)
+
     this.rounds.push(round)
     return this.state()
   }
@@ -20,7 +23,7 @@ class Match {
   semiRandomChoice(playerChoice, iteration) {
     // Humans don't repeat themselves as often as a random number generator,
     // and tied rounds are boring. Attempt to reduce both outcomes by retrying
-    // repeatedly before accepting either result.
+    // several times before accepting either result.
     let choice = randomItem(this.choices)
 
     if (iteration === 5) return choice
@@ -33,13 +36,11 @@ class Match {
   }
 
   lastComputerChoice() {
-    if (this.rounds.length > 0) {
-      return this.rounds[this.rounds.length - 1].computerChoice
-    }
+    if (!empty(this.rounds)) return last(this.rounds).computerChoice
   }
 
   state() {
-    let state = {
+    return {
       score: {
         player:   this.playerScore(),
         computer: this.computerScore()
@@ -50,21 +51,18 @@ class Match {
         matchOutcome: this.matchOutcome()
       }
     }
-    return state
   }
 
   playerScore() {
-    let filter = this.rounds.filter((round) => {
-      return round.winner() === "player"
-    })
-    return filter.length
+    return this.rounds.reduce((score, round) => {
+      return (round.winner() === "player") ? score + 1 : score
+    }, 0)
   }
 
   computerScore() {
-    let filter = this.rounds.filter((round) => {
-      return round.winner() === "computer"
-    })
-    return filter.length
+    return this.rounds.reduce((score, round) => {
+      return (round.winner() === "computer") ? score + 1 : score
+    }, 0)
   }
 
   roundNumber() {
@@ -72,12 +70,15 @@ class Match {
   }
 
   roundOutcome() {
-    if (this.rounds.length > 0) return this.rounds[this.rounds.length - 1].outcome()
+    if (!empty(this.rounds)) return last(this.rounds).outcome()
   }
 
   matchOutcome() {
-    if (this.winner() === "player") return "The Enterprise crew wins!"
-    if (this.winner() === "computer") return "Khan has defeated you!"
+    switch (this.winner()) {
+      case "player":    return "The Enterprise crew wins!"
+      case "computer":  return "Khan has defeated you!"
+      default:          return null
+    }
   }
 
   winner() {
