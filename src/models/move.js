@@ -6,7 +6,7 @@ class Move {
   }
 }
 
-const kirk = new Move("Kirk", "Spock", "Kirk fascinates Spock.")
+const kirk  = new Move("Kirk", "Spock", "Kirk fascinates Spock.")
 const spock = new Move("Spock", "Bones", "Spock logics Bones.")
 const bones = new Move("Bones", "Kirk", "Bones sasses Kirk.")
 
