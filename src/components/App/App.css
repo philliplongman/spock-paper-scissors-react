@@ -40,6 +40,7 @@
 }
 
 .App-officer {
+  cursor: pointer;
   flex-grow: 1;
 }
 

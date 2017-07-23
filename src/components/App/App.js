@@ -1,20 +1,32 @@
 import React, { Component } from 'react'
-import badge from '../../assets/images/badge.png'
-import kirk from '../../assets/images/kirk.png'
-import spock from '../../assets/images/spock.png'
-import bones from '../../assets/images/bones.png'
+import Match from '../../models/match'
 import './App.css'
 
+import badge from '../../assets/images/badge.png'
+import kirk_face from '../../assets/images/kirk.png'
+import spock_face from '../../assets/images/spock.png'
+import bones_face from '../../assets/images/bones.png'
+
+
 class App extends Component {
-  constructor(props) {
+  constructor(props, match) {
     super(props)
+    this.match = new Match()
     this.state = {
       score: { player: 0, computer: 0 },
-      round: { number: 1, message: "Choose your officer!" }
+      messages: {
+        roundNumber:   "Round 1",
+        roundOutcome:  "Choose your officer!",
+        matchOutcome:  null
+      }
     }
   }
 
-  playerChooses(officer) {
+  playerChooses(index) {
+    if (!this.match.winner()) {
+      let state = this.match.newRound(index)
+      this.setState(state)
+    }
   }
 
   render() {
@@ -33,19 +45,20 @@ class App extends Component {
         </div>
 
         <div className="App-round">
-          <p>Round {this.state.round.number}</p>
-          <p>Round {this.state.round.message}</p>
+          <p>{this.state.messages.roundNumber}</p>
+          <p>{this.state.messages.roundOutcome}</p>
+          <p>{this.state.messages.matchOutcome}</p>
         </div>
 
         <div className="App-officers">
-          <div className="App-officer" onClick={this.playerChooses("kirk")}>
-            <img src={kirk} alt="Kirk"/>
+          <div className="App-officer" onClick={() => this.playerChooses(0)}>
+            <img src={kirk_face} alt="Kirk"/>
           </div>
-          <div className="App-officer" onClick={this.playerChooses("spock")}>
-            <img src={spock} alt="Spock"/>
+          <div className="App-officer" onClick={() => this.playerChooses(1)}>
+            <img src={spock_face} alt="Spock"/>
           </div>
-          <div className="App-officer" onClick={this.playerChooses("bones")}>
-            <img src={bones} alt="Bones"/>
+          <div className="App-officer" onClick={() => this.playerChooses(2)}>
+            <img src={bones_face} alt="Bones"/>
           </div>
         </div>
       </div>
