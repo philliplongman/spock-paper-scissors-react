@@ -1,10 +1,9 @@
 import React, { Component } from "react"
 import Match from "../../models/match"
-import "./App.css"
 
+import Choices from "../Choices/Choices"
 import Header from "../Header/Header"
 import Messages from "../Messages/Messages"
-import Officer from "../Officer/Officer"
 import Scoreboard from "../Scoreboard/Scoreboard"
 
 
@@ -33,6 +32,7 @@ class App extends Component {
   render() {
     let score = this.state.score
     let messages = this.state.messages
+    let choices = ["Kirk", "Spock", "Bones"]
     let handleNewRound = this.handleNewRound
 
     return (
@@ -40,11 +40,7 @@ class App extends Component {
         <Header/>
         <Scoreboard score={score}/>
         <Messages messages={messages}/>
-        <div className="App-officers">
-          <Officer name="Kirk"  index={0} onClick={handleNewRound}/>
-          <Officer name="Spock" index={1} onClick={handleNewRound}/>
-          <Officer name="Bones" index={2} onClick={handleNewRound}/>
-        </div>
+        <Choices choices={choices} onClick={handleNewRound}/>
       </div>
     )
   }

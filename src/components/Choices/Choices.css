@@ -1,0 +1,15 @@
+.Choices {
+  display: flex;
+  margin: auto;
+  margin-top: 20px;
+  max-width: 600px;
+}
+
+.Choices-character {
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.Choices-character-img{
+  width: 100%;
+}
