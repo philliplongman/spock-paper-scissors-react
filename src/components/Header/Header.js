@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import Match from "../../models/match"
 import "./Header.css"
 
 import badge from "../../assets/images/badge.png"

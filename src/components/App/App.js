@@ -4,6 +4,7 @@ import "./App.css"
 
 import Header from "../Header/Header"
 import Officer from "../Officer/Officer"
+import Scoreboard from "../Scoreboard/Scoreboard"
 
 
 class App extends Component {
@@ -29,16 +30,14 @@ class App extends Component {
   }
 
   render() {
+    let score = this.state.score
+    let handleNewRound = this.handleNewRound
+
     return (
       <div className="App">
         <Header/>
 
-        <div className="App-scoreboard">
-          <div className="App-scoreboard-container">
-            <div>Enterprise: {this.state.score.player}</div>
-            <div>Khan: {this.state.score.computer}</div>
-          </div>
-        </div>
+        <Scoreboard score={score}/>
 
         <div className="App-round">
           <p>{this.state.messages.roundNumber}</p>
@@ -47,9 +46,9 @@ class App extends Component {
         </div>
 
         <div className="App-officers">
-          <Officer name="Kirk"  index={0} onClick={this.handleNewRound}/>
-          <Officer name="Spock" index={1} onClick={this.handleNewRound}/>
-          <Officer name="Bones" index={2} onClick={this.handleNewRound}/>
+          <Officer name="Kirk"  index={0} onClick={handleNewRound}/>
+          <Officer name="Spock" index={1} onClick={handleNewRound}/>
+          <Officer name="Bones" index={2} onClick={handleNewRound}/>
         </div>
       </div>
     )
