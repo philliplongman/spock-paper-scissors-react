@@ -1,0 +1,18 @@
+.Header {
+  background-color: #5098c6;
+  padding: 30px;
+}
+
+.Header-logo {
+  height: 80px;
+}
+
+.Header-text {
+  bottom: 20px;
+  color: #242424;
+  font-family: Final Frontier Oldstyle;
+  font-style: italic;
+  font-size: 54px;
+  text-transform: uppercase;
+  position: relative;
+}

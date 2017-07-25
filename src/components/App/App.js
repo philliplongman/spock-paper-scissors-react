@@ -2,9 +2,8 @@ import React, { Component } from "react"
 import Match from "../../models/match"
 import "./App.css"
 
+import Header from "../Header/Header"
 import Officer from "../Officer/Officer"
-
-import badge from "../../assets/images/badge.png"
 
 
 class App extends Component {
@@ -32,12 +31,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>
-            <img src={badge} className="App-logo" alt="logo" />
-            <span>Spock Paper Scissors</span>
-          </h2>
-        </div>
+        <Header/>
 
         <div className="App-scoreboard">
           <div className="App-scoreboard-container">
