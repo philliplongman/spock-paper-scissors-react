@@ -13,7 +13,6 @@ class Rounds {
   newRound(index) {
     let playerChoice   = this.choices[index]
     let computerChoice = this.choices[this.randomIndex(index)]
-    console.log(computerChoice.name);
     let round          = new Round(playerChoice, computerChoice)
 
     this.rounds.push(round)
@@ -37,7 +36,7 @@ class Rounds {
     }
     // give a lower weight to the move chosen by the player
     weights[index] = weights[index]/2
-    console.log(weights);
+
     return weights
   }
 

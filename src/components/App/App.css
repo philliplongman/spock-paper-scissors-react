@@ -45,15 +45,6 @@
   margin: 26px 0 40px 0;
 }
 
-.App-officer {
-  cursor: pointer;
-  flex-grow: 1;
-}
-
-.App-officer img{
-  width: 100%;
-}
-
 .App-officers {
   display: flex;
   margin: auto;

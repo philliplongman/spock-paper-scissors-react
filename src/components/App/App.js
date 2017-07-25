@@ -1,15 +1,14 @@
-import React, { Component } from 'react'
-import Match from '../../models/match'
-import './App.css'
+import React, { Component } from "react"
+import Match from "../../models/match"
+import "./App.css"
 
-import badge from '../../assets/images/badge.png'
-import kirk_face from '../../assets/images/kirk.png'
-import spock_face from '../../assets/images/spock.png'
-import bones_face from '../../assets/images/bones.png'
+import Officer from "../Officer/Officer"
+
+import badge from "../../assets/images/badge.png"
 
 
 class App extends Component {
-  constructor(props, match) {
+  constructor(props) {
     super(props)
     this.match = new Match()
     this.state = {
@@ -20,9 +19,10 @@ class App extends Component {
         matchOutcome:  null
       }
     }
+    this.handleNewRound = this.handleNewRound.bind(this)
   }
 
-  playerChooses(index) {
+  handleNewRound(index) {
     if (!this.match.winner()) {
       let state = this.match.newRound(index)
       this.setState(state)
@@ -53,15 +53,9 @@ class App extends Component {
         </div>
 
         <div className="App-officers">
-          <div className="App-officer" onClick={() => this.playerChooses(0)}>
-            <img src={kirk_face} alt="Kirk"/>
-          </div>
-          <div className="App-officer" onClick={() => this.playerChooses(1)}>
-            <img src={spock_face} alt="Spock"/>
-          </div>
-          <div className="App-officer" onClick={() => this.playerChooses(2)}>
-            <img src={bones_face} alt="Bones"/>
-          </div>
+          <Officer name="Kirk"  index={0} onClick={this.handleNewRound}/>
+          <Officer name="Spock" index={1} onClick={this.handleNewRound}/>
+          <Officer name="Bones" index={2} onClick={this.handleNewRound}/>
         </div>
       </div>
     )
