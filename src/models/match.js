@@ -16,11 +16,12 @@ class Match {
         player:   this.playerScore(),
         computer: this.computerScore()
       },
-      messages: {
-        roundNumber:  this.roundNumber(),
-        roundOutcome: this.roundOutcome(),
-        matchOutcome: this.matchOutcome()
-      }
+      messages: [
+        this.roundNumber(),
+        this.roundMessage(),
+        this.roundOutcome(),
+        this.matchOutcome()
+      ]
     }
   }
 
@@ -36,13 +37,17 @@ class Match {
     return `Round: ${this.rounds.count()}`
   }
 
+  roundMessage() {
+    if (this.rounds.last()) return this.rounds.last().message()
+  }
+
   roundOutcome() {
     if (this.rounds.last()) return this.rounds.last().outcome()
   }
 
   matchOutcome() {
     switch (this.winner()) {
-      case "player":    return "The Enterprise crew wins!"
+      case "player":    return "The Enterprise wins!"
       case "computer":  return "Khan has defeated you!"
       default:          return null
     }

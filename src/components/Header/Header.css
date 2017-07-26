@@ -1,18 +1,31 @@
 .Header {
   background-color: #5098c6;
-  padding: 30px;
+  padding: 24px;
+  padding-left: 10px;
 }
 
-.Header-logo {
-  height: 80px;
+.Header.small img {
+  height: 16vw;
 }
 
-.Header-text {
-  bottom: 20px;
+.Header.medium img {
+  height: 90px;
+}
+
+.Header span {
   color: #242424;
   font-family: Final Frontier Oldstyle;
   font-style: italic;
-  font-size: 54px;
   text-transform: uppercase;
   position: relative;
+}
+
+.Header.small span{
+  bottom: 3.7vw;
+  font-size: 10vw;
+}
+
+.Header.medium span{
+  bottom: 24px;
+  font-size: 3.4em;
 }

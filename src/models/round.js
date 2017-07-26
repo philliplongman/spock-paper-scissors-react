@@ -9,11 +9,19 @@ class Round {
     if (this.computerChoice.beats === this.playerChoice.name) return "computer"
   }
 
+  message() {
+    switch (this.winner()) {
+      case "player":    return this.playerChoice.winMessage
+      case "computer":  return this.computerChoice.winMessage
+      default:          return "Transporter duplicate!"
+    }
+  }
+
   outcome() {
     switch (this.winner()) {
-      case "player":    return `${this.playerChoice.winMessage} You win.`
-      case "computer":  return `${this.computerChoice.winMessage} You lose.`
-      default:          return "Transporter duplicate! A tie."
+      case "player":    return "You win."
+      case "computer":  return "You lose."
+      default:          return "A tie."
     }
   }
 }

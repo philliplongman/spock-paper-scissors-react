@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+
 import Match from "../../models/match"
 
 import Choices from "../Choices/Choices"
@@ -13,11 +14,7 @@ class App extends Component {
     this.match = new Match()
     this.state = {
       score: { player: 0, computer: 0 },
-      messages: {
-        roundNumber:   "Round 1",
-        roundOutcome:  "Choose your officer!",
-        matchOutcome:  null
-      }
+      messages: ["Round 1", "Choose your officer!", null, null]
     }
     this.handleNewRound = this.handleNewRound.bind(this)
   }
