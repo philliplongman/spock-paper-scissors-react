@@ -53,6 +53,10 @@ class Rounds {
     return this.rounds.length
   }
 
+  isEmpty() {
+    return this.rounds.length === 0
+  }
+
   last() {
     return last(this.rounds)
   }
@@ -61,6 +65,10 @@ class Rounds {
     return this.rounds.filter((round) => {
       return round.winner === string
     })
+  }
+
+  clear() {
+    this.rounds = []
   }
 }
 

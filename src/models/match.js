@@ -38,30 +38,25 @@ class Match {
     return this.rounds.wonBy("computer").length
   }
 
+  startMessage() {
+    "Choose your officer!"
+  }
+
   roundNumber() {
-    return `Round: ${this.rounds.count()}`
+    if (this.rounds.isEmpty()) {
+      return "Choose your officer!"
+    }
+    else {
+      return `Round: ${this.rounds.count()}`
+    }
   }
 
   roundMessage() {
-    if (this.rounds.last()) return this.rounds.last().message()
+    if (!this.rounds.isEmpty()) return this.rounds.last().message()
   }
 
   roundOutcome() {
-    if (this.rounds.last()) return this.rounds.last().outcome()
-  }
-
-  sound() {
-    return this.winner() ? this.matchSound() : this.roundSound()
-  }
-
-  roundSound() {
-    if (this.rounds.last()) return this.rounds.last().sound()
-  }
-
-  matchSound() {
-    if (this.playerScore() === 3) return playerWin
-    if (this.computerScore() === 3) return playerLose
-    return ""
+    if (!this.rounds.isEmpty()) return this.rounds.last().outcome()
   }
 
   matchOutcome() {
@@ -75,6 +70,24 @@ class Match {
   winner() {
     if (this.playerScore() === 3) return "player"
     if (this.computerScore() === 3) return "computer"
+  }
+
+  sound() {
+    return this.matchSound() || this.roundSound() || ""
+  }
+
+  roundSound() {
+    if (!this.rounds.isEmpty()) return this.rounds.last().sound()
+  }
+
+  matchSound() {
+    if (this.playerScore() === 3) return playerWin
+    if (this.computerScore() === 3) return playerLose
+  }
+
+  reset() {
+    this.rounds.clear()
+    return this.state()
   }
 }
 

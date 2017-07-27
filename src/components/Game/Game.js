@@ -10,11 +10,7 @@ import Sound from "react-sound"
 class Game extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      score: { player: 0, computer: 0 },
-      messages: ["Round 1", "Choose your officer!", null, null],
-      sound: ""
-    }
+    this.state = this.props.match.state()
     this.handleNewRound = this.handleNewRound.bind(this)
   }
 
@@ -24,11 +20,15 @@ class Game extends Component {
 
   handleNewRound(index) {
     let match = this.props.match
+    let state
 
-    if (!match.winner()) {
-      let state = match.newRound(index)
-      this.setState(state)
+    if (match.winner()) {
+      state = match.reset()
     }
+    else {
+      state = match.newRound(index)
+    }
+    this.setState(state)
   }
 
   render() {
