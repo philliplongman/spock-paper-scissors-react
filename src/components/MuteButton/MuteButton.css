@@ -1,8 +1,10 @@
 .MuteButton {
+  border: 1px #8a8a8a solid;
   border-radius: 50%;
-  background-color: #7cc5f4;
-  height: 28px;
-  width: 28px;
+  background-color: #dfdfdf;
+  height: 24px;
+  width: 24px;
+  opacity: 0.5;
   position: absolute;
   top: 14px;
   right: 14px;
@@ -10,5 +12,5 @@
 
 .MuteButton img{
   padding: 4px;
-  height: 20px;
+  height: 16px;
 }
