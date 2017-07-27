@@ -14,49 +14,44 @@ class Match {
     return this.state()
   }
 
+  reset() {
+    this.rounds.clear()
+    return this.state()
+  }
+
   state() {
-    return {
-      score: {
-        player:   this.playerScore(),
-        computer: this.computerScore()
-      },
-      messages: [
-        this.roundNumber(),
-        this.roundMessage(),
-        this.roundOutcome(),
-        this.matchOutcome()
-      ],
-      sound: this.sound()
-    }
-  }
+    let round = this.rounds.last()
 
-  playerScore() {
-    return this.rounds.wonBy("player").length
-  }
-
-  computerScore() {
-    return this.rounds.wonBy("computer").length
-  }
-
-  startMessage() {
-    "Choose your officer!"
-  }
-
-  roundNumber() {
-    if (this.rounds.isEmpty()) {
-      return "Choose your officer!"
+    if (round) {
+      return {
+        score:    this.score(),
+        messages: this.messages(round),
+        sound:    this.sound(round)
+      }
     }
     else {
-      return `Round: ${this.rounds.count()}`
+      return {
+        score:    { player: 0, computer: 0 },
+        messages: ["Choose your officer!"],
+        sound:    ""
+      }
     }
   }
 
-  roundMessage() {
-    if (!this.rounds.isEmpty()) return this.rounds.last().message()
+  score() {
+    return {
+      player:   this.rounds.wonBy("player").length,
+      computer: this.rounds.wonBy("computer").length
+    }
   }
 
-  roundOutcome() {
-    if (!this.rounds.isEmpty()) return this.rounds.last().outcome()
+  messages(round) {
+    return [
+      `Round: ${this.rounds.count()}`,
+      round.message(),
+      round.outcome(),
+      this.matchOutcome()
+    ]
   }
 
   matchOutcome() {
@@ -67,27 +62,17 @@ class Match {
     }
   }
 
+  sound(round) {
+    switch (this.winner()) {
+      case "player":    return playerWin
+      case "computer":  return playerLose
+      default:          return round.sound()
+    }
+  }
+
   winner() {
-    if (this.playerScore() === 3) return "player"
-    if (this.computerScore() === 3) return "computer"
-  }
-
-  sound() {
-    return this.matchSound() || this.roundSound() || ""
-  }
-
-  roundSound() {
-    if (!this.rounds.isEmpty()) return this.rounds.last().sound()
-  }
-
-  matchSound() {
-    if (this.playerScore() === 3) return playerWin
-    if (this.computerScore() === 3) return playerLose
-  }
-
-  reset() {
-    this.rounds.clear()
-    return this.state()
+    if (this.score().player === 3) return "player"
+    if (this.score().computer === 3) return "computer"
   }
 }
 

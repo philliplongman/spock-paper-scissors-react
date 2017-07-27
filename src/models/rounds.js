@@ -53,10 +53,6 @@ class Rounds {
     return this.rounds.length
   }
 
-  isEmpty() {
-    return this.rounds.length === 0
-  }
-
   last() {
     return last(this.rounds)
   }
