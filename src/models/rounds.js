@@ -59,7 +59,7 @@ class Rounds {
 
   wonBy(string) {
     return this.rounds.filter((round) => {
-      return round.winner() === string
+      return round.winner === string
     })
   }
 }

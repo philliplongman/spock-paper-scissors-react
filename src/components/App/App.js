@@ -2,42 +2,24 @@ import React, { Component } from "react"
 
 import Match from "../../models/match"
 
-import Choices from "../Choices/Choices"
-import Header from "../Header/Header"
-import Messages from "../Messages/Messages"
-import Scoreboard from "../Scoreboard/Scoreboard"
+import Game from "../Game/Game"
+import Sound from "react-sound"
+
+import bridge from "../../assets/sounds/bridge.mp3"
+
 
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.match = new Match()
-    this.state = {
-      score: { player: 0, computer: 0 },
-      messages: ["Round 1", "Choose your officer!", null, null]
-    }
-    this.handleNewRound = this.handleNewRound.bind(this)
-  }
-
-  handleNewRound(index) {
-    if (!this.match.winner()) {
-      let state = this.match.newRound(index)
-      this.setState(state)
-    }
-  }
-
   render() {
-    let score = this.state.score
-    let messages = this.state.messages
-    let choices = ["Kirk", "Spock", "Bones"]
-    let handleNewRound = this.handleNewRound
-
     return (
       <div className="App">
-        <Header/>
-        <Scoreboard score={score}/>
-        <Messages messages={messages}/>
-        <Choices choices={choices} onClick={handleNewRound}/>
+        <Sound
+          url={bridge}
+          autoLoad={true}
+          playStatus={"PLAYING"}
+          onFinishedPlaying={() => {this.forceUpdate()}}
+        />
+        <Game match={new Match()}/>
       </div>
     )
   }

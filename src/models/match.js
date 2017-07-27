@@ -1,5 +1,9 @@
 import Rounds from './rounds'
 
+import playerWin from "../assets/sounds/player-win.mp3"
+import playerLose from "../assets/sounds/player-lose.mp3"
+
+
 class Match {
   constructor() {
     this.rounds = new Rounds()
@@ -21,7 +25,8 @@ class Match {
         this.roundMessage(),
         this.roundOutcome(),
         this.matchOutcome()
-      ]
+      ],
+      sound: this.sound()
     }
   }
 
@@ -43,6 +48,20 @@ class Match {
 
   roundOutcome() {
     if (this.rounds.last()) return this.rounds.last().outcome()
+  }
+
+  sound() {
+    return this.winner() ? this.matchSound() : this.roundSound()
+  }
+
+  roundSound() {
+    if (this.rounds.last()) return this.rounds.last().sound()
+  }
+
+  matchSound() {
+    if (this.playerScore() === 3) return playerWin
+    if (this.computerScore() === 3) return playerLose
+    return ""
   }
 
   matchOutcome() {
