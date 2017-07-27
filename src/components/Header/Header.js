@@ -9,8 +9,9 @@ import badge from "../../assets/images/badge.png"
 
 class Header extends Component {
   component(params) {
+    let color = this.props.color
     return (
-      <div className={classnames("Header", params)}>
+      <div className={classnames("Header", color, params)}>
         <img src={badge} alt="Federation badge" />
         <span>Spock Paper Scissors</span>
       </div>

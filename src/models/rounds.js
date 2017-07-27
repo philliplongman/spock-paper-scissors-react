@@ -2,11 +2,11 @@ import Chance from "chance"
 import last from "array-last"
 
 import Round from './round'
-import {kirk, spock, bones} from "./move"
+
 
 class Rounds {
-  constructor() {
-    this.choices = [kirk, spock, bones]
+  constructor(choices) {
+    this.choices = choices
     this.rounds = []
   }
 

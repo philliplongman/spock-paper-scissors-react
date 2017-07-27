@@ -1,12 +1,10 @@
 import Rounds from './rounds'
 
-import playerWin from "../assets/sounds/player-win.mp3"
-import playerLose from "../assets/sounds/player-lose.mp3"
-
 
 class Match {
-  constructor() {
-    this.rounds = new Rounds()
+  constructor(ruleset) {
+    this.rules = ruleset
+    this.rounds = new Rounds(ruleset.choices)
   }
 
   newRound(index) {
@@ -56,16 +54,16 @@ class Match {
 
   matchOutcome() {
     switch (this.winner()) {
-      case "player":    return "The Enterprise wins!"
-      case "computer":  return "Khan has defeated you!"
+      case "player":    return this.rules.player.winMessage
+      case "computer":  return this.rules.computer.winMessage
       default:          return null
     }
   }
 
   sound(round) {
     switch (this.winner()) {
-      case "player":    return playerWin
-      case "computer":  return playerLose
+      case "player":    return this.rules.player.winSound
+      case "computer":  return this.rules.computer.winSound
       default:          return round.sound()
     }
   }

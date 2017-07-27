@@ -1,7 +1,10 @@
 .Header {
-  background-color: #5098c6;
   padding: 24px;
   padding-left: 10px;
+}
+
+.Header.blue {
+  background-color: #5098c6;
 }
 
 .Header.small img {

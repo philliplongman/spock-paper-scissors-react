@@ -32,17 +32,26 @@ class Game extends Component {
   }
 
   render() {
+    let rules = this.props.match.rules
+
+    let color = rules.header.color
+
+    let player = rules.player.name
+    let computer = rules.computer.name
     let score = this.state.score
+
     let messages = this.state.messages
-    let choices = ["Kirk", "Spock", "Bones"]
+
+    let choices = rules.choices
     let handleNewRound = this.handleNewRound
+
     let mute = this.props.mute
     let sound = this.state.sound
 
     return (
       <div className="Game">
-        <Header/>
-        <Scoreboard score={score}/>
+        <Header color={color}/>
+        <Scoreboard player={player} computer={computer} score={score}/>
         <Messages messages={messages}/>
         <Choices choices={choices} onClick={handleNewRound}/>
         { mute ||

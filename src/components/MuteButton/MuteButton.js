@@ -8,12 +8,12 @@ import unmute from "../../assets/images/unmute.svg"
 
 class MuteButton extends Component {
   handleClick() {
-    let playSound = !this.props.playSound
-    this.props.onClick(playSound)
+    let mute = !this.props.mute
+    this.props.onClick(mute)
   }
 
   render() {
-    let icon = this.props.playSound ? unmute : mute
+    let icon = this.props.mute ? mute : unmute
     let alt = path.basename(icon)
 
     return (

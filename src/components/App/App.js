@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 
+import standardRules from "../../models/rules"
 import Match from "../../models/match"
 
 import Game from "../Game/Game"
@@ -8,13 +9,11 @@ import Sound from "react-sound"
 
 import bridge from "../../assets/sounds/bridge.mp3"
 
-const match = new Match()
-
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      ruleset: standardRules,
+      match: new Match(standardRules),
       mute: false
     }
     this.handleMute = this.handleMute.bind(this)
@@ -30,6 +29,7 @@ class App extends Component {
   }
 
   render() {
+    let match = this.state.match
     let mute = this.state.mute
 
     return (

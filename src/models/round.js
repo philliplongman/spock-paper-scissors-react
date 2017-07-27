@@ -9,8 +9,8 @@ class Round {
   }
 
   decideWinner() {
-    if (this.playerChoice.beats === this.computerChoice.name) return "player"
-    if (this.computerChoice.beats === this.playerChoice.name) return "computer"
+    if (this.computerChoice.name.match(this.playerChoice.beats)) return "player"
+    if (this.playerChoice.name.match(this.computerChoice.beats)) return "computer"
   }
 
   message() {
