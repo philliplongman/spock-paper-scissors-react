@@ -20,11 +20,9 @@ class App extends Component {
       matchState:   match.state(),
       mute:         false
     }
-
-    this.handleNewRound = this.handleNewRound.bind(this)
   }
 
-  handleNewRound(index) {
+  handleNewRound = (index) => {
     let match = this.state.matchObject
     let state
 

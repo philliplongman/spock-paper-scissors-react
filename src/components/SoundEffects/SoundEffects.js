@@ -11,12 +11,7 @@ soundManager.setup({ignoreMobileRestrictions: true, debugMode: false})
 
 
 class SoundEffects extends Component {
-  constructor(props) {
-    super(props)
-    this.handleLoop = this.handleLoop.bind(this)
-  }
-
-  handleLoop() {
+  handleLoop = (e) => {
     this.forceUpdate()
   }
 

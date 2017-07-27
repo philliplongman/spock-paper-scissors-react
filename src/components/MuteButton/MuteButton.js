@@ -13,11 +13,9 @@ class MuteButton extends Component {
   constructor(props) {
     super(props)
     this.state = { mute: false }
-
-    this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick() {
+  handleClick = (e) => {
     let mute = !this.state.mute
 
     if (mute) soundManager.mute()
