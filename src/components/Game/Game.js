@@ -36,6 +36,7 @@ class Game extends Component {
     let messages = this.state.messages
     let choices = ["Kirk", "Spock", "Bones"]
     let handleNewRound = this.handleNewRound
+    let playSound = this.props.playSound
     let sound = this.state.sound
 
     return (
@@ -44,7 +45,9 @@ class Game extends Component {
         <Scoreboard score={score}/>
         <Messages messages={messages}/>
         <Choices choices={choices} onClick={handleNewRound}/>
-        <Sound url={sound} autoLoad={true} playStatus={"PLAYING"}/>
+        { playSound &&
+          <Sound url={sound} autoLoad={true} playStatus={Sound.status.PLAYING}/>
+        }
       </div>
     )
   }
