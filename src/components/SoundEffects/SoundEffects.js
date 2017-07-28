@@ -2,6 +2,7 @@ import React, { Component } from "react"
 
 import MuteButton from "../MuteButton/MuteButton"
 import Sound from "react-sound"
+import SoundLoop from "../SoundLoop/SoundLoop"
 
 import {soundManager} from "soundmanager2"
 
@@ -11,26 +12,17 @@ soundManager.setup({ignoreMobileRestrictions: true, debugMode: false})
 
 
 class SoundEffects extends Component {
-  handleLoop = (e) => {
-    this.forceUpdate()
-  }
-
   render() {
     let soundEffect = this.props.sound
 
     return (
       <div className="SoundEffects">
         <MuteButton/>
+        <SoundLoop sound={bridge}/>
         <Sound
           url={soundEffect}
           autoLoad={true}
           playStatus={Sound.status.PLAYING}
-        />
-        <Sound
-          url={bridge}
-          autoLoad={true}
-          playStatus={Sound.status.PLAYING}
-          onFinishedPlaying={this.handleLoop}
         />
       </div>
     )
