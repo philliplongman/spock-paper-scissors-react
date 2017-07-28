@@ -3,7 +3,7 @@ import "./Choices.css"
 
 class Choices extends Component {
   handleClick = (e) => {
-    let index = Number.parseInt(e.target.dataset.index)
+    let index = parseInt(e.target.dataset.index, 10)
     this.props.onClick(index)
   }
 

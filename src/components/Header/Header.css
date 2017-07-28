@@ -7,6 +7,10 @@
   background-color: #5098c6;
 }
 
+.Header.yellow {
+  background-color: #b1cc47;
+}
+
 .Header.small img {
   height: 16vw;
 }

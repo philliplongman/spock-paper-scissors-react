@@ -30,7 +30,30 @@ const standardRules = {
     winMessage: "Khan has defeated you!",
     winSound:   computerWin
   },
-  header: { color: "blue" }
+  header: {
+    title: "Spock Paper Scissors",
+    color: "blue"
+  }
 }
 
-export default standardRules
+const kobayashiMaru = {
+  choices: [
+    new Move("Kirk", /./, kirk, "Kirk fascinates Spock.", kirkWin, kirkLose),
+    new Move("Spock", /./, spock, "Spock logics Bones.", spockWin, spockLose),
+    new Move("Bones", /./, bones, "Bones sasses Kirk.", bonesWin, bonesLose)
+  ],
+  player: {
+    name:       "Enterprise",
+    winMessage: "You saved the Kobayashi Maru!",
+    winSound:   playerWin
+  },
+  computer: {
+    name:       "Klingons",
+  },
+  header: {
+    title: "Kobayashi Maru",
+    color: "yellow"
+  }
+}
+
+export {standardRules, kobayashiMaru}

@@ -9,6 +9,7 @@
     "react": "^15.6.1",
     "react-container-query": "^0.9.1",
     "react-dom": "^15.6.1",
+    "react-konami": "^0.4.0",
     "react-scripts": "1.0.10",
     "react-sound": "^0.7.0"
   },

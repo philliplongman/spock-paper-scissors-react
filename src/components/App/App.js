@@ -1,10 +1,11 @@
 import React, { Component } from "react"
 
-import standardRules from "../../models/rules"
+import {standardRules, kobayashiMaru} from "../../models/rules"
 import Match from "../../models/match"
 
 import Choices from "../Choices/Choices"
 import Header from "../Header/Header"
+import Konami from "react-konami"
 import Messages from "../Messages/Messages"
 import Scoreboard from "../Scoreboard/Scoreboard"
 import SoundEffects from "../SoundEffects/SoundEffects"
@@ -20,6 +21,15 @@ class App extends Component {
       matchState:   match.state(),
       mute:         false
     }
+  }
+
+  handleKonami = (e) => {
+    let match = new Match(kobayashiMaru)
+
+    this.setState({
+      matchObject:  match,
+      matchState:   match.state()
+    })
   }
 
   handleNewRound = (index) => {
@@ -42,6 +52,7 @@ class App extends Component {
     let sound     = state.sound
 
     let rules     = this.state.matchObject.rules
+    let title     = rules.header.title
     let color     = rules.header.color
     let player    = rules.player.name
     let computer  = rules.computer.name
@@ -49,11 +60,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header color={color}/>
+        <Header title={title} color={color}/>
         <Scoreboard player={player} computer={computer} score={score}/>
         <Messages messages={messages}/>
         <Choices choices={choices} onClick={this.handleNewRound}/>
         <SoundEffects sound={sound}/>
+        <Konami easterEgg={this.handleKonami}/>
       </div>
     )
   }
