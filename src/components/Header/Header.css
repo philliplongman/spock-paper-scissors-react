@@ -3,6 +3,10 @@
   padding-left: 10px;
 }
 
+.Header.large {
+  padding-top: 100px;
+}
+
 .Header.blue {
   background-color: #5098c6;
 }
@@ -15,7 +19,8 @@
   height: 16vw;
 }
 
-.Header.medium img {
+.Header.medium img,
+.Header.large img {
   height: 90px;
 }
 
@@ -32,7 +37,8 @@
   font-size: 10vw;
 }
 
-.Header.medium span{
+.Header.medium span,
+.Header.large span{
   bottom: 24px;
   font-size: 3.4em;
 }

@@ -22,8 +22,9 @@ class Header extends Component {
 
   render() {
     const breakpoints = {
-      "small":  { maxWidth: 474 },
-      "medium": { minWidth: 475 }
+      small:  { maxWidth: 474 },
+      medium: { minWidth: 475, maxWidth: 1499 },
+      large:  { minWidth: 1500 }
     }
 
     return (
