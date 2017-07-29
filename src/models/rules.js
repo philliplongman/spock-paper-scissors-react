@@ -12,6 +12,7 @@ import bonesWin from "../assets/sounds/bones-win.mp3"
 import bonesLose from "../assets/sounds/bones-lose.mp3"
 import playerWin from "../assets/sounds/player-win.mp3"
 import computerWin from "../assets/sounds/computer-win.mp3"
+import konamiWin from "../assets/sounds/konami-win.mp3"
 import tieSound from "../assets/sounds/tie.mp3"
 
 
@@ -22,8 +23,8 @@ const standardRules = {
     new Move("Bones", /Kirk/, bones, "Bones sasses Kirk.", bonesWin, bonesLose)
   ],
   tie: {
-    message: "Transporter duplicate!",
-    sound:   tieSound
+    message:    "Transporter duplicate!",
+    sound:      tieSound
   },
   player: {
     name:       "Enterprise",
@@ -36,12 +37,13 @@ const standardRules = {
     winSound:   computerWin
   },
   header: {
-    title: "Spock Paper Scissors",
-    color: "blue"
+    title:      "Spock Paper Scissors",
+    color:      "blue"
   }
 }
 
 const kobayashiMaru = {
+  // The player always wins, and there are no ties.
   choices: [
     new Move("Kirk", /./, kirk, "Kirk fascinates Spock.", kirkWin, kirkLose),
     new Move("Spock", /./, spock, "Spock logics Bones.", spockWin, spockLose),
@@ -50,10 +52,10 @@ const kobayashiMaru = {
   player: {
     name:       "Enterprise",
     winMessage: "You saved the Kobayashi Maru!",
-    winSound:   playerWin
+    winSound:   konamiWin
   },
   computer: {
-    name:       "Klingons",
+    name:       "Klingons"
   },
   header: {
     title: "Kobayashi Maru",
