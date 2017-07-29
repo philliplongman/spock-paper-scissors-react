@@ -13,17 +13,13 @@ soundManager.setup({ignoreMobileRestrictions: true, debugMode: false})
 
 class SoundEffects extends Component {
   render() {
-    let soundEffect = this.props.sound
+    let sound = this.props.sound
 
     return (
       <div className="SoundEffects">
         <MuteButton/>
         <SoundLoop sound={bridge}/>
-        <Sound
-          url={soundEffect}
-          autoLoad={true}
-          playStatus={Sound.status.PLAYING}
-        />
+        <Sound url={sound} autoLoad={true} playStatus={Sound.status.PLAYING}/>
       </div>
     )
   }

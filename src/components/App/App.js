@@ -10,6 +10,7 @@ import Messages from "../Messages/Messages"
 import Scoreboard from "../Scoreboard/Scoreboard"
 import SoundEffects from "../SoundEffects/SoundEffects"
 
+
 class App extends Component {
   constructor(props) {
     super(props)

@@ -1,10 +1,10 @@
-import tieSound from "../assets/sounds/tie.mp3"
 
 
 class Round {
-  constructor(playerChoice, computerChoice) {
+  constructor(playerChoice, computerChoice, tie) {
     this.playerChoice = playerChoice
     this.computerChoice = computerChoice
+    this.tie = tie
     this.winner = this.decideWinner()
   }
 
@@ -17,7 +17,7 @@ class Round {
     switch (this.winner) {
       case "player":    return this.playerChoice.winMessage
       case "computer":  return this.computerChoice.winMessage
-      default:          return "Transporter duplicate!"
+      default:          return this.tie.message
     }
   }
 
@@ -33,7 +33,7 @@ class Round {
     switch (this.winner) {
       case "player":    return this.playerChoice.winSound
       case "computer":  return this.playerChoice.loseSound
-      default:          return tieSound
+      default:          return this.tie.sound
     }
   }
 }

@@ -5,15 +5,16 @@ import Round from './round'
 
 
 class Rounds {
-  constructor(choices) {
-    this.choices = choices
+  constructor(rules) {
+    this.choices = rules.choices
+    this.tie = rules.tie
     this.rounds = []
   }
 
   newRound(index) {
     let playerChoice   = this.choices[index]
     let computerChoice = this.choices[this.randomIndex(index)]
-    let round          = new Round(playerChoice, computerChoice)
+    let round          = new Round(playerChoice, computerChoice, this.tie)
 
     this.rounds.push(round)
   }

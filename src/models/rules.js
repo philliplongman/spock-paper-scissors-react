@@ -12,6 +12,7 @@ import bonesWin from "../assets/sounds/bones-win.mp3"
 import bonesLose from "../assets/sounds/bones-lose.mp3"
 import playerWin from "../assets/sounds/player-win.mp3"
 import computerWin from "../assets/sounds/computer-win.mp3"
+import tieSound from "../assets/sounds/tie.mp3"
 
 
 const standardRules = {
@@ -20,6 +21,10 @@ const standardRules = {
     new Move("Spock", /Bones/, spock, "Spock logics Bones.", spockWin, spockLose),
     new Move("Bones", /Kirk/, bones, "Bones sasses Kirk.", bonesWin, bonesLose)
   ],
+  tie: {
+    message: "Transporter duplicate!",
+    sound:   tieSound
+  },
   player: {
     name:       "Enterprise",
     winMessage: "The Enterprise wins!",

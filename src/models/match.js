@@ -4,7 +4,7 @@ import Rounds from './rounds'
 class Match {
   constructor(ruleset) {
     this.rules = ruleset
-    this.rounds = new Rounds(ruleset.choices)
+    this.rounds = new Rounds(ruleset)
   }
 
   newRound(index) {
