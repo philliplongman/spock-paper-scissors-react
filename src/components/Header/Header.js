@@ -8,12 +8,12 @@ import badge from "../../assets/images/badge.png"
 
 
 class Header extends Component {
-  component(params) {
+  component(size) {
     let color = this.props.color
     let title = this.props.title
 
     return (
-      <div className={classnames("Header", color, params)}>
+      <div className={classnames("Header", color, size)}>
         <img src={badge} alt="Federation badge" />
         <span>{title}</span>
       </div>
@@ -21,7 +21,7 @@ class Header extends Component {
   }
 
   render() {
-    const breakpoints = {
+    let breakpoints = {
       small:  { maxWidth: 474 },
       medium: { minWidth: 475, maxWidth: 1499 },
       large:  { minWidth: 1500 }
@@ -29,7 +29,7 @@ class Header extends Component {
 
     return (
       <ContainerQuery query={breakpoints}>
-        { (params) => this.component(params) }
+        { size => this.component(size) }
       </ContainerQuery>
     )
   }

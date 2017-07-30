@@ -6,11 +6,11 @@ import classnames from "classnames"
 
 
 class Messages extends Component {
-  component(params) {
-    const messages = this.props.messages
+  component(size) {
+    let messages = this.props.messages
 
     return (
-      <div className={classnames("Messages", params)}>
+      <div className={classnames("Messages", size)}>
         { messages.map((message, i) => {
           return <p key={i}>{message}</p>
         })}
@@ -19,14 +19,15 @@ class Messages extends Component {
   }
 
   render() {
-    const breakpoints = {
-      "small":  { maxWidth: 474 },
-      "medium": { minWidth: 475 }
+    let breakpoints = {
+      small:  { maxWidth: 474 },
+      medium: { minWidth: 475, maxWidth: 1499 },
+      large:  { minWidth: 1500 }
     }
 
     return (
       <ContainerQuery query={breakpoints}>
-        { (params) => this.component(params) }
+        { size => this.component(size) }
       </ContainerQuery>
     )
   }
