@@ -63,10 +63,6 @@ class Rounds {
       return round.winner === string
     })
   }
-
-  clear() {
-    this.rounds = []
-  }
 }
 
 export default Rounds

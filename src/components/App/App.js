@@ -35,15 +35,19 @@ class App extends Component {
 
   handleNewRound = (index) => {
     let match = this.state.matchObject
-    let state
 
     if (match.winner()) {
-      state = match.reset()
+      let newMatch = new Match(standardRules)
+      this.setState({
+        matchObject:  newMatch,
+        matchState:   newMatch.state()
+      })
     }
     else {
-      state = match.newRound(index)
+      this.setState({
+        matchState: match.newRound(index)
+      })
     }
-    this.setState({ matchState: state })
   }
 
   render() {

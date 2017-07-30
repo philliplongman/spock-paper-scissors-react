@@ -12,11 +12,6 @@ class Match {
     return this.state()
   }
 
-  reset() {
-    this.rounds.clear()
-    return this.state()
-  }
-
   state() {
     let round = this.rounds.last()
 
