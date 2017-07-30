@@ -1,10 +1,13 @@
-.Header {
-  padding: 24px;
-  padding-left: 10px;
+.Header.small {
+  padding: 24px 24px 24px 10px;
+}
+
+.Header.medium {
+  padding: 44px 44px 44px 10px;
 }
 
 .Header.large {
-  padding-top: 100px;
+  padding: 124px 44px 44px 10px;
 }
 
 .Header.blue {
