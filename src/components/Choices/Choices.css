@@ -1,8 +1,17 @@
 .Choices {
   display: flex;
   margin: auto;
-  margin-top: 80px;
   max-width: 600px;
+}
+
+.Choices.small {
+  position: absolute !important;
+  bottom: 8vh;
+}
+
+.Choices.medium,
+.Choices.large {
+  margin-top: 80px;
 }
 
 .Choices-character {
