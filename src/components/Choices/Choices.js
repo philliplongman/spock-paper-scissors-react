@@ -4,29 +4,28 @@ import "./Choices.css"
 import {ContainerQuery} from "react-container-query"
 import classnames from "classnames"
 
+import Face from "../Face/Face"
+
 class Choices extends Component {
   handleClick = (e) => {
-    let index = parseInt(e.target.dataset.index, 10)
-    this.props.onClick(index)
+    let indexStr = e.target.dataset.index
+
+    if (indexStr) {
+      let index = parseInt(indexStr, 10)
+      this.props.onClick(index)
+    }
   }
 
   component(size) {
+    let r = this.props.choices[0]
+    let p = this.props.choices[1]
+    let s = this.props.choices[2]
+
     return (
-      <div className={classnames("Choices", size)}>
-
-        {this.props.choices.map((choice, i) => {
-          return (
-            <div className="Choices-character" key={i} onClick={this.handleClick}>
-              <img
-                className="Choices-character-img"
-                src={choice.image}
-                alt={choice.name}
-                data-index={i}
-              />
-            </div>
-          )
-
-        })}
+      <div className={classnames("Choices", size)} onClick={this.handleClick}>
+        <Face name={r.name} image={r.image} index={0}/>
+        <Face name={p.name} image={p.image} index={1}/>
+        <Face name={s.name} image={s.image} index={2}/>
       </div>
     )
   }
@@ -40,7 +39,7 @@ class Choices extends Component {
 
     return (
       <ContainerQuery query={breakpoints}>
-        { size => this.component(size) }
+        {size => this.component(size)}
       </ContainerQuery>
     )
   }

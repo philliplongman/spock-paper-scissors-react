@@ -1,0 +1,8 @@
+.Face {
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.Face img{
+  width: 100%;
+}

@@ -13,12 +13,3 @@
 .Choices.large {
   margin-top: 80px;
 }
-
-.Choices-character {
-  cursor: pointer;
-  flex-grow: 1;
-}
-
-.Choices-character-img{
-  width: 100%;
-}
